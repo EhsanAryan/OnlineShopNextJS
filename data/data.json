@@ -1,0 +1,36 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "productTitle": "Product 1",
+            "price": "124000"
+        },
+        {
+            "id": "2",
+            "productTitle": "Product 2",
+            "price": "228000"
+        },
+        {
+            "id": "3",
+            "productTitle": "Product 3",
+            "price": "456000"
+        }
+    ],
+    "admins": [
+        {
+            "id": "1",
+            "username": "EhsanAryan",
+            "email": "ehsan.aryan2001@gmail.com"
+        },
+        {
+            "id": "2",
+            "username": "TestOne",
+            "email": "test@gmail.com"
+        },
+        {
+            "id": "3",
+            "username": "TestTwo",
+            "email": "test@yahoo.com"
+        }
+    ]
+}
