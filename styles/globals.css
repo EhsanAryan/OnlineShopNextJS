@@ -2,46 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-.full-page {
-  position: fixed;
-  top: 0;
-  left: 0;
+.main-container {
+  height: calc(100vh - 4rem - 3.5rem);
+  z-index: 200;
+}
+
+.nav-items::after {
+  content: "";
+  display: block;
   width: 100%;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 2rem 1rem;
-  font-size: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 3px;
+  position: relative;
+  top: 3px;
+  border-radius: 15px;
+  background-color: black;
+  transform: scale(0, 1);
+  transform-origin: left;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
 }
 
-.unstyled-list {
-  list-style-type: none;
-  font-size: 1.75rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.nav-items:hover::after {
+  transform: scale(1);
+  opacity: 1;
 }
 
-.no-link {
-  text-decoration: none !important;
-  color: unset !important;
-}
-
-.custom-input {
-  background-color: #616161;
-  color: #fff;
-  border: none;
-  outline: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
-}
-
-.custom-input::placeholder {
-  color: #fafafa;
-}
-
-.pointer {
-  cursor: pointer;
-}
