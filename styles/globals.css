@@ -4,7 +4,6 @@
 
 .main-container {
   height: calc(100vh - 4rem - 3.5rem);
-  z-index: 200;
 }
 
 .nav-items::after {
@@ -26,4 +25,20 @@
   transform: scale(1);
   opacity: 1;
 }
+
+.iconed-input + i {
+  transition: all 150ms ease-in;
+}
+
+.iconed-input:focus + i {
+  color: green;
+}
+
+
+
+
+
+
+
+
 

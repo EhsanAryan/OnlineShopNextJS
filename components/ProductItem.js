@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import React, { useContext } from 'react';
-import productItems from "../data/products.json";
+import productItems from "../data/products.js";
 import { CartContext } from '@/context/CartContext';
 import Image from 'next/image';
 import { Alert } from '@/utils/Alert';
 import { useRouter } from 'next/router';
 
-const Product = ({ item }) => {
+const ProductItem = ({ item }) => {
     const { globalData, dispatch } = useContext(CartContext);
     
     const router = useRouter();
@@ -63,4 +63,4 @@ const Product = ({ item }) => {
     );
 }
 
-export default Product;
+export default ProductItem;
