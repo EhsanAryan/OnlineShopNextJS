@@ -1,37 +1,8 @@
 import Link from 'next/link';
-import React, { useContext } from 'react';
-import productItems from "../data/products.js";
-import { CartContext } from '@/context/CartContext';
+import React from 'react';
 import Image from 'next/image';
-import { Alert } from '@/utils/Alert';
-import { useRouter } from 'next/router';
 
-const ProductItem = ({ item }) => {
-    const { globalData, dispatch } = useContext(CartContext);
-    
-    const router = useRouter();
-
-    const handleAddToCart = (slug) => {
-        const product = productItems.find(p => p.slug === slug);
-        const existingItem = globalData.cart.cartItems.find(item => item.slug === product.slug);
-        // qty is a new property for product objects to specify quantity of a product in the cart.
-        const qty = existingItem ? existingItem.qty + 1 : 1;
-
-        if (qty > product.count) {
-            Alert("Product is out", "Try again if the product stock increases.");
-            return;
-        }
-
-        dispatch({
-            type: "ADD_ITEM",
-            payload: {
-                ...product,
-                qty
-            }
-        });
-        router.push("/cart");
-    }
-
+const ProductItem = ({ item, handleAddToCart }) => {
     return (
         <div className="bg-white rounded-xl mb-4 overflow-hidden shadow-lg shadow-gray-500">
             <Link href={`product/${item.slug}`}>
@@ -50,7 +21,7 @@ const ProductItem = ({ item }) => {
                 <span className="text-gray-700 mb-5">{item.price.toLocaleString()} Toman</span>
                 {item.count > 0 ? (
                     <button className="bg-gray-800 text-white rounded-2xl px-8 py-2 mb-1"
-                        onClick={() => handleAddToCart(item.slug)}>
+                        onClick={() => handleAddToCart(item)}>
                         Add to cart
                     </button>
                 ) : (
