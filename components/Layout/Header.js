@@ -19,7 +19,7 @@ const Header = () => {
     }, [cart.cartItems]);
 
     const handleSignOut = () => {
-        Cookies.remove();
+        Cookies.remove("cart");
 
         signOut({
             callbackUrl: "/login"

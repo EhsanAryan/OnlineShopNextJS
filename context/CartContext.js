@@ -7,8 +7,10 @@ export const CartContext = createContext({
 });
 
 const initialState = {
-    cart: Cookies.get("cart") ? JSON.parse(Cookies.get("cart")) : { cartItems: [] }
-}
+    cart: Cookies.get("cart") ? 
+    JSON.parse(Cookies.get("cart")) :
+    { cartItems: [], checkoutData: {}, paymentMethod: "" }
+};
 
 const reducer = (prevState, action) => {
     switch (action.type) {
@@ -45,6 +47,27 @@ const reducer = (prevState, action) => {
                 cart: {
                     ...prevState.cart,
                     cartItems: newCartItems
+                }
+            };
+
+        case "ADD_CHECKOUT_DATA":
+            return {
+                ...prevState,
+                cart: {
+                    ...prevState.cart,
+                    checkoutData: {
+                        ...prevState.cart.checkoutData,
+                        ...action.payload
+                    }
+                }
+            };
+
+        case "ADD_PAYMENT_METHOD":
+            return {
+                ...prevState,
+                cart: {
+                    ...prevState.cart,
+                    paymentMethod: action.payload
                 }
             };
 

@@ -6,10 +6,13 @@ import { Alert, Confirm } from '@/utils/Alert';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import { useSession } from 'next-auth/react';
 
 const Cart = () => {
     const { globalData, dispatch } = useContext(CartContext);
     const { cartItems } = globalData.cart;
+
+    const { data: session } = useSession();
 
     const router = useRouter();
 
@@ -82,7 +85,7 @@ const Cart = () => {
                         </div>
                         <div>
                             <button type="button" className="bg-gray-800 text-white rounded-2xl
-                             px-5 py-2" onClick={() => router.push("/checkout")}>
+                             px-5 py-2" onClick={() => router.push(session?.user ? "/checkout" : "/login")}>
                                 Checkout
                             </button>
                         </div>

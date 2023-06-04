@@ -50,7 +50,7 @@ const Login = () => {
                 <div className="mb-4">
                     <div className="relative h-12">
                         <input type="password" name="password" placeholder="Password"
-                            className="iconed-input w-full h-full bg-white px-9 rounded-xl outline-0"
+                            className="iconed-input w-full h-full bg-white px-9 rounded-xl outline-0" autoFocus
                             {...register("password", {
                                 required: true,
                                 minLength: {
@@ -69,7 +69,7 @@ const Login = () => {
                         </div>
                     )}
                 </div>
-                <div className="ml-2 mt-6 mb-4">
+                <div className="mt-5 mb-4">
                     <button type="submit" className="bg-gray-800 text-white px-6 py-2 rounded-xl">
                         Login
                     </button>

@@ -11,6 +11,7 @@ const ProductItem = ({ item, handleAddToCart }) => {
                         src={item.image}
                         fill
                         className="object-cover rounded-t-xl"
+                        alt={item.title}
                     />
                 </div>
             </Link>
