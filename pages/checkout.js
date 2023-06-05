@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 
 const Checkout = () => {
-    const { register, handleSubmit, setValue } = useForm();
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm();
 
     const { globalData, dispatch } = useContext(CartContext);
     const { cart } = globalData;
@@ -55,6 +55,9 @@ const Checkout = () => {
                         {...register("name", {
                             required: true,
                         })} />
+                    {errors.name && (
+                        <div className="text-red-500 mt-1">Please enter your name.</div>
+                    )}
                 </div>
                 <div className="mb-4">
                     <input className="w-full bg-white p-2 rounded-xl outline-0"
@@ -62,6 +65,9 @@ const Checkout = () => {
                         {...register("address", {
                             required: true,
                         })} />
+                    {errors.address && (
+                        <div className="text-red-500 mt-1">Please enter your address.</div>
+                    )}
                 </div>
                 <div className="mb-4">
                     <input className="w-full bg-white p-2 rounded-xl outline-0"
@@ -69,6 +75,9 @@ const Checkout = () => {
                         {...register("postalCode", {
                             required: true,
                         })} />
+                    {errors.postalCode && (
+                        <div className="text-red-500 mt-1">Please enter your postal code.</div>
+                    )}
                 </div>
                 <div className="mt-5 mb-4">
                     <button type="submit" className="bg-gray-800 text-white px-6 py-2 rounded-xl">

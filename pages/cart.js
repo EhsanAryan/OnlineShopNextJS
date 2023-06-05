@@ -79,7 +79,7 @@ const Cart = () => {
                             Total Price:
                             <span className="ml-2 text-2blue-500 font-semibold">
                                 {cartItems.reduce((acc, item) => {
-                                    return acc + (Number(item.price) * item.qty);
+                                    return acc + (Number(item.price) * Number(item.qty));
                                 }, 0).toLocaleString()}
                             </span>
                         </div>
