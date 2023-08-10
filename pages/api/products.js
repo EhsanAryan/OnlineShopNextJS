@@ -2,7 +2,7 @@ import db from "@/utils/db";
 import products from "@/data/products";
 import Product from "@/models/product";
 
-const productHandler = async (req, res) => {
+const productsHandler = async (req, res) => {
     await db.connect();
 
     await Product.deleteMany();
@@ -11,4 +11,4 @@ const productHandler = async (req, res) => {
     res.send({ message: "Products added successfully."});
 }
 
-export default productHandler;
+export default productsHandler;

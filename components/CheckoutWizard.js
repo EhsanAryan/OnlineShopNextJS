@@ -12,7 +12,7 @@ const CheckoutWizard = ({ activeStep = 0, className }) => {
         <div className={`flex flex-wrap ${className || ""}`}>
             {titles.map((title, index) => (
                 <div key={index}
-                className={`border-b-2 flex-1 text-center 
+                className={`border-b-2 flex-auto text-center 
                 ${index <= activeStep ?
                 "border-b-blue-600 text-blue-600" :
                 "border-b-gray-700 text-gray-700"}`}

@@ -54,9 +54,21 @@ const Header = () => {
                                 </Menu.Button>
                                 <Menu.Items className="absolute right-0 flex flex-col w-48 bg-white
                                  px-3 py-4 border-2 border-slate-200 rounded-lg origin-top-right">
+                                    {session.user.isAdmin && (
+                                        <Menu.Item className="flex py-1">
+                                            <Link href="/admin/dashboard">
+                                                Dashboard
+                                            </Link>
+                                        </Menu.Item>
+                                    )}
                                     <Menu.Item className="flex py-1">
                                         <Link href="/profile">
                                             Profile
+                                        </Link>
+                                    </Menu.Item>
+                                    <Menu.Item className="flex py-1 cursor-pointer">
+                                        <Link href="/orders-history">
+                                            Orders History
                                         </Link>
                                     </Menu.Item>
                                     <Menu.Item className="flex py-1 cursor-pointer">

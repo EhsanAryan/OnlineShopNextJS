@@ -50,7 +50,7 @@ const Checkout = () => {
             <form className="max-w-screen-md mx-auto" onSubmit={handleSubmit(submitHandler)}>
                 <h2 className="mb-5 text-xl">Checkout</h2>
                 <div className="mb-4">
-                    <input className="w-full bg-white p-2 rounded-xl outline-0"
+                    <input type="text" className="w-full bg-white p-2 rounded-xl outline-0"
                         name="name" placeholder="Name" autoFocus
                         {...register("name", {
                             required: true,
@@ -60,7 +60,7 @@ const Checkout = () => {
                     )}
                 </div>
                 <div className="mb-4">
-                    <input className="w-full bg-white p-2 rounded-xl outline-0"
+                    <input type="text" className="w-full bg-white p-2 rounded-xl outline-0"
                         name="address" placeholder="Address" autoFocus
                         {...register("address", {
                             required: true,
@@ -70,7 +70,7 @@ const Checkout = () => {
                     )}
                 </div>
                 <div className="mb-4">
-                    <input className="w-full bg-white p-2 rounded-xl outline-0"
+                    <input type="text" className="w-full bg-white p-2 rounded-xl outline-0"
                         name="postalCode" placeholder="Postal Code" autoFocus
                         {...register("postalCode", {
                             required: true,

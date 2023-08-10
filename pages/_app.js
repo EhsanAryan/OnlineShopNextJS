@@ -4,6 +4,7 @@ import '../styles/fontawesome.css';
 import { SessionProvider, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/Layout';
+import { useEffect } from 'react';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -11,7 +12,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       <SessionProvider session={session}>
         <CartContextContainer>
           {Component.auth ? (
-            <Auth>
+            <Auth adminOnly={Component.auth.adminOnly}>
               <Component {...pageProps} />
             </Auth>
           ) : (
@@ -23,15 +24,23 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   )
 }
 
-const Auth = ({ children }) => {
+const Auth = ({ children, adminOnly }) => {
   const router = useRouter();
-  const { status } = useSession({
+  const { status, data: session } = useSession({
     required: true,
     onUnauthenticated() {
       router.push("/unauthenticated");
     }
   });
 
+  useEffect(() => {
+    if(session?.user) {
+      if(adminOnly && !session.user.isAdmin) {
+        router.push("/unauthenticated");
+      }
+    }
+  }, [session])
+  
   return status === "loading" ? (
     <Layout>
       <div className="text-2xl text-center my-4">Loading...</div>

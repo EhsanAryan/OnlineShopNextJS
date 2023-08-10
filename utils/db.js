@@ -14,4 +14,5 @@ const db = {
     connect,
     convertToObject
 };
+
 export default db;

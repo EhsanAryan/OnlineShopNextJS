@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from 'next/router';
+import { Alert } from '@/utils/Alert';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -23,7 +24,7 @@ const Login = () => {
                 password
             });
             if(result.error) {
-                console.log(result.error);
+                Alert("خطا!", "ایمیل یا رمز عبور نامعتبر می‌باشد.", "error");
             }
         } catch (error) {
             console.log(typeof error === "string" ? error : error.message);

@@ -36,8 +36,8 @@ const Cart = () => {
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-4 md:gap-10">
                     <div className="md:col-span-3">
-                        <table className="w-full overflow-x-auto">
-                            <thead className="text-center">
+                        <table className="w-full overflow-x-auto text-center">
+                            <thead>
                                 <tr className="border-b-2 border-black">
                                     <th className="text-left pl-1">Product</th>
                                     <th>Quantity</th>
@@ -45,7 +45,7 @@ const Cart = () => {
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody className="text-center">
+                            <tbody>
                                 {cartItems.map(item => (
                                     <tr key={item.slug} className="border-b-2 border-gray-500">
                                         <td className="pl-1 pt-2 pb-1">

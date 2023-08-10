@@ -43,7 +43,7 @@ const Payment = () => {
     }, []);
 
     return (
-        <Layout>
+        <Layout title="Payment">
             <CheckoutWizard activeStep={2} className="mb-10" />
             <form className="max-w-screen-md mx-auto" onSubmit={submitHandler}>
                 <h2 className="text-lg mb-3">Payment Method:</h2>

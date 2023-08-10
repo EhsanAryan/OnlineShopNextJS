@@ -14,7 +14,7 @@ const Layout = ({ title, children }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>{`Shopping | ${title || "Page"}`}</title>
             </Head>
-            <ToastContainer position="top-right" limit={5} autoClose={1500} />
+            <ToastContainer position="top-left" limit={5} autoClose={1500} />
             <div className="w-full h-screen">
                <Header />
                 <Main>
