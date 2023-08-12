@@ -1,22 +1,20 @@
 import Layout from '@/components/Layout';
 import Menu from '@/components/admin/Menu';
-import { Alert } from '@/utils/Alert';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-const Dashboard = () => {
+const Orders = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [adminData, setAdminData] = useState(null);
+    const [orders, setOrders] = useState([]);
     const router = useRouter();
 
-    const handleGetAdminData = async () => {
+    const handleGetOrders = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch("/api/admin/summary");
+            const response = await fetch("/api/admin/orders");
             if (response.status === 200) {
                 const data = await response.json();
-                setAdminData(data);
+                setOrders(data);
             }
         } catch (error) {
             await Alert("خطا!", "در دریافت داده‌ها مشکلی رخ داده است!", "error");
@@ -27,24 +25,8 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
-        handleGetAdminData();
+        handleGetOrders();
     }, []);
-
-
-    const cartsInfo = [
-        {
-            text: "Orders",
-            field: "ordersCount"
-        },
-        {
-            text: "Products",
-            field: "productsCount"
-        },
-        {
-            text: "users",
-            field: "usersCount"
-        }
-    ];
 
     return (
         <Layout title="Admin Dashboard">
@@ -59,19 +41,22 @@ const Dashboard = () => {
                         <Menu className="w-2/3" />
                     </div>
                     <div className="text-center md:col-span-3 mt-10 md:mt-0">
-                        <h4 className="text-lg mb-4">Statistics:</h4>
-                        <div className="flex justify-center">
-                            {cartsInfo.map((item, index) => (
+                        <h4 className="text-lg mb-4">Orders:</h4>
+                        <div className="flex flex-col items-center px-2 md:px-0">
+                            <div
+                                className="flex px-2 py-3 w-full md:w-2/3"
+                            >
+                                <div className="flex-1">Payment Method</div>
+                                <div className="flex-1">Total Price</div>
+                            </div>
+                            {orders.map((item, index) => (
                                 <div
-                                    key={`adminData_${index}`}
-                                    className="w-28 h-28 bg-white rounded-lg
-                                shadow-md shadow-gray-600 mx-3 text-lg font-semibold
-                                flex flex-col justify-center items-center"
+                                    key={`order_${index}`}
+                                    className="flex bg-white rounded-lg w-full md:w-2/3
+                                    shadow-md shadow-gray-600 px-2 py-3 my-2"
                                 >
-                                    <span className="mb-1">
-                                        {adminData[item.field]}
-                                    </span>
-                                    <span>{item.text}</span>
+                                    <div className="flex-1">{item.paymentMethod}</div>
+                                    <div className="flex-1">{item.totalPrice}</div>
                                 </div>
                             ))}
                         </div>
@@ -83,6 +68,7 @@ const Dashboard = () => {
     );
 }
 
-Dashboard.auth = { adminOnly: true };
+Orders.auth = { adminOnly: true };
 
-export default Dashboard;
+
+export default Orders;

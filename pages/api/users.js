@@ -2,7 +2,7 @@ import User from "@/models/user";
 import db from "@/utils/db";
 import users from "../../data/users.js";
 
-const usersHandler = async (req, res) => {
+const handler = async (req, res) => {
     await db.connect();
 
     await User.deleteMany();
@@ -11,4 +11,4 @@ const usersHandler = async (req, res) => {
     res.send({ message: "Users added successfully." })
 }
 
-export default usersHandler;
+export default handler;

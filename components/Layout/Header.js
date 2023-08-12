@@ -46,7 +46,7 @@ const Header = () => {
                     </span>
                     <span className="mx-2 flex">
                         {status === "loading" ? (
-                            "Loading..."
+                            <span className="text-blue-700 wink">Loading...</span>
                         ) : session?.user ? (
                             <Menu as="div" className="relative inline-block">
                                 <Menu.Button className="text-blue-600 nav-items after:bg-transparent">

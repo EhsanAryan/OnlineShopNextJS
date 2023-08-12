@@ -43,7 +43,7 @@ const Auth = ({ children, adminOnly }) => {
   
   return status === "loading" ? (
     <Layout>
-      <div className="text-2xl text-center my-4">Loading...</div>
+      <div className="text-blue-700 text-2xl text-center wink my-4">Loading...</div>
     </Layout>
   ) : (
     children
